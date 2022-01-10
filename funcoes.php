@@ -4,11 +4,23 @@ function MostrarMensagem($mensagem){
     echo $mensagem . PHP_EOL;
 }
 
-function excluirLivro(&$livros, $nomeLivro){
-    if ((array_key_exists($nomeLivro,$livros))==true){
-        unset ($livros[$nomeLivro]);
-        return;
-    }
-    MostrarMensagem("Livro excluido com sucesso");
+
+function removerLivro(string $livro, array &$array)
+{
+    $index = array_search($livro, array_column($array, 'nome'));
+
+    unset($array[$index]);
+}
+
+
+function addLivro(&$livro, $nome, $autor, $dataPub, $status)
+{
+    array_push($livro,[
+            'nome' => $nome,
+            'autor'=> $autor,
+            'dataPub' => $dataPub,
+            'status' => $status
+        ]
+    );
 }
 

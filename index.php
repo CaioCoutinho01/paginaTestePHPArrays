@@ -2,43 +2,15 @@
 
 require_once 'funcoes.php';
 
-$listaLivros = [
-    'Soco na cara' => [
-        'autor' => 'Arthur Conan Doyle',
-        'dataPublicacao' => 2005,
-        'statusLeitura' => 'Lido'
-    ],
-    'O Deus Pródigo' => [
-        'autor' => 'Timothy Keller',
-        'dataPublicacao' => 2008,
-        'statusLeitura' => 'Lido'
-    ],
-    'A tulipa negra' => [
-        'autor' => 'Alexandre Dumas',
-        'dataPublicacao' => 1850,
-        'statusLeitura' => 'Lido'
-    ],
-    'A colina sagrada' => [
-        'autor' => 'Álvaro Cardoso Gomes',
-        'dataPublicacao' => 2006,
-        'statusLeitura' => 'Lido'
-    ],
-    'Coleção de livros Harry Potter' => [
-        'autor' => 'J.K Rowling',
-        'dataPublicacao' => '1997 a 2007',
-        'statusLeitura' => 'Lendo'
-    ],
-    'IT - A Coisa' => [
-        'autor' => 'Stephen King',
-        'dataPublicacao' => 1986,
-        'statusLeitura' => 'Falta ler'
-    ],
-    'Coleção de livros Anne of Green Gables' => [
-        'autor' => 'Lucy Maud Montgomery',
-        'dataPublicacao' => '1908 a 1939',
-        'statusLeitura' => 'Falta ler'
-    ]
-];
+$listaLivros = [];
+addLivro($listaLivros, 'Soco na cara', 'Arthur Conan Doyle', 2005, 'Lido');
+addLivro($listaLivros, 'O Deus Pródigo', 'Timothy Keller', 2008, 'Lido');
+addLivro($listaLivros, 'A tulipa negra', 'Alexandre Dumas', 1850, 'Lido');
+addLivro($listaLivros, 'Coleção de livros Harry Potter', 'J.K Rowling', '1997 a 2007', 'Lendo');
+addLivro($listaLivros, 'IT - A Coisa', 'Stephen King', 1986, 'Falta Ler');
+addLivro($listaLivros, 'Coleção de livros Anne of Green Gables', 'Lucy Maud Montgomery', '1908 a 1939', 'Falta Ler');
+//addLivro($listaLivros, 'TesteAdd', 'teste', '1908 a 1939', 'Falta Ler');
+//removerLivro('TesteAdd', $listaLivros);
 
 
 
@@ -56,21 +28,21 @@ $listaLivros = [
 <body>
     <h1>Lista de Livros</h1>
     <ul>
-        <?php foreach ($listaLivros as $nomeLivro => $livros) { ?>
-        <?php ['autor' => $autor, 'dataPublicacao' => $dataPub, 'statusLeitura' => $statusLeitura ] = $livros;?>
+        <?php foreach ($listaLivros as $livros) { ?>
+        <?php ['nome' => $nome, 'autor' => $autor, 'dataPub' => $dataPub, 'status' => $status ] = $livros;?>
         <li>
-             <?php echo "$nomeLivro escrito por $autor em $dataPub . "?>
-                <?php if ($statusLeitura === 'Lido') { ?>
+             <?php echo "$nome escrito por $autor em $dataPub . "?>
+                <?php if ($status === 'Lido') { ?>
                      <div style="color: green">
-                         <?php echo "Status: $statusLeitura"?>
+                         <?php echo "Status: $status"?>
                      </div>
-                    <?php } else if ($statusLeitura === 'Lendo') { ?>
+                    <?php } else if ($status === 'Lendo') { ?>
                         <div style="color: orange">
-                            <?php echo "Status: $statusLeitura"?>
+                            <?php echo "Status: $status"?>
                         </div>
                         <?php } else { ?>
                             <div style="color: red">
-                                <?php echo "Status: $statusLeitura"?>
+                                <?php echo "Status: $status"?>
                             </div>
                         <?php } ?>
         </li>
